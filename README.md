@@ -107,23 +107,19 @@ tests/test_pawpal.py::test_filter_tasks_by_pet_and_completion PASSED     [100%]
 
 ## 📐 Smarter Scheduling
 
-> Fill in once you've implemented scheduling logic.
-
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting | `Scheduler.sort_by_time()` | Sorts by `(due_date, time)` tuple, so recurring tasks pushed to a future date sort after today's tasks even at the same clock time. |
+| Filtering | `Scheduler.filter_tasks()` | Filters by `pet_name` and/or `completed` status; used to build per-pet views and "pending only" views. |
+| Conflict handling | `Scheduler.detect_conflicts()` | Flags tasks sharing the same `(due_date, time)` key with a warning string; does not block scheduling, just surfaces the warning. |
+| Recurring tasks | `Task.mark_complete()` / `Task._next_occurrence()` | Daily tasks get a due date `+1 day`, weekly tasks `+7 days`; `Scheduler.complete_task()` re-attaches the new task to the same pet. |
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+1. Enter the owner's name and add one or more pets (name + species) under "Owner & Pet".
+2. Under "Tasks", pick a pet, enter a task title, time (HH:MM), duration, priority, and frequency (once/daily/weekly), then click "Add task". Repeat to build up a few tasks, including two at the same time for the same pet.
+3. Click "Generate schedule" to see today's pending tasks in chronological order in a table.
+4. If two tasks share the same time, a `⚠️` conflict warning appears above the table naming both tasks.
+5. Click "Mark done" next to any task to complete it — if it's a daily/weekly task, PawPal+ automatically schedules its next occurrence, which you'll see on the next "Generate schedule" for the following day.
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
-
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+**Screenshot or video** *(optional)*: not included — the CLI output above and the walkthrough steps demonstrate the working behavior.
