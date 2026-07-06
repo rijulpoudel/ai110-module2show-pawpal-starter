@@ -84,11 +84,26 @@ pytest
 pytest --cov
 ```
 
+Tests cover task completion, task counting, chronological sorting, daily recurrence,
+one-off (non-recurring) tasks, same-time conflict detection, and filtering by pet/completion status.
+
 Sample test output:
 
 ```
-# Paste your pytest output here
+collected 7 items
+
+tests/test_pawpal.py::test_mark_complete_changes_status PASSED           [ 14%]
+tests/test_pawpal.py::test_add_task_increases_pet_task_count PASSED      [ 28%]
+tests/test_pawpal.py::test_sort_by_time_returns_chronological_order PASSED [ 42%]
+tests/test_pawpal.py::test_daily_recurrence_creates_task_for_next_day PASSED [ 57%]
+tests/test_pawpal.py::test_once_task_does_not_recur PASSED               [ 71%]
+tests/test_pawpal.py::test_detect_conflicts_flags_same_date_and_time PASSED [ 85%]
+tests/test_pawpal.py::test_filter_tasks_by_pet_and_completion PASSED     [100%]
+
+============================== 7 passed in 0.01s ===============================
 ```
+
+**Confidence Level:** ⭐⭐⭐⭐☆ (4/5) — see reflection.md section 4b for what's still untested.
 
 ## 📐 Smarter Scheduling
 
