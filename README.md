@@ -44,14 +44,34 @@ pip install -r requirements.txt
 
 ## 🖥️ Sample Output
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
+Output from running `python main.py`:
 
 ```
-# e.g.:
-# Daily plan for Biscuit (Golden Retriever):
-#   08:00 — Morning walk (30 min) [priority: high]
-#   09:00 — Feeding (10 min) [priority: high]
-#   ...
+Today's Schedule (sorted by time)
+  08:00 — Morning walk (Mochi, 30 min, priority: high, pending)
+  08:00 — Feeding (Mochi, 10 min, priority: high, pending)
+  08:30 — Feeding (Biscuit, 10 min, priority: high, pending)
+  09:00 — Litter box cleaning (Biscuit, 5 min, priority: medium, pending)
+  18:00 — Evening walk (Mochi, 30 min, priority: high, pending)
+
+Conflict warnings:
+  ⚠️  Conflict at 08:00: 'Morning walk' (Mochi) overlaps with 'Feeding' (Mochi)
+
+Completing task: Morning walk for Mochi
+  Recurrence created: Morning walk at 08:00
+
+Mochi's Tasks
+  08:00 — Morning walk (Mochi, 30 min, priority: high, done)
+  08:00 — Feeding (Mochi, 10 min, priority: high, pending)
+  18:00 — Evening walk (Mochi, 30 min, priority: high, pending)
+  08:00 — Morning walk (Mochi, 30 min, priority: high, pending)
+
+All Pending Tasks
+  08:00 — Feeding (Mochi, 10 min, priority: high, pending)
+  08:30 — Feeding (Biscuit, 10 min, priority: high, pending)
+  09:00 — Litter box cleaning (Biscuit, 5 min, priority: medium, pending)
+  18:00 — Evening walk (Mochi, 30 min, priority: high, pending)
+  08:00 — Morning walk (Mochi, 30 min, priority: high, pending)
 ```
 
 ## 🧪 Testing PawPal+
